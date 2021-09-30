@@ -1,0 +1,30 @@
+Here we have a .pcap file, let's go open it with wireshark
+
+scp -P 4242 level02@192.168.56.101:~/level02.pcap .
+
+The pcap file is a tcp connection, after follow stream we have:
+
+..%..%..&..... ..#..'..$..&..... ..#..'..$.. .....#.....'........... .38400,38400....#.SodaCan:0....'..DISPLAY.SodaCan:0......xterm.........."........!........"..".....b........b....	B.
+..............................1.......!.."......"......!..........."........"..".............	..
+.....................
+Linux 2.6.38-8-generic-pae (::ffff:10.1.1.2) (pts/10)
+
+..wwwbugs login: l.le.ev.ve.el.lX.X
+..
+Password: ft_wandr...NDRel.L0L
+.
+..
+Login incorrect
+wwwbugs login: 
+
+we have "Password: ft_wandr...NDRel.L0L"
+
+With hexdump we see '.' is 7F and in ascii table is [DEL]
+
+So password is ft_waNDReL0L
+
+level02@SnowCrash:~$ su flag02
+Password: 
+Don't forget to launch getflag !
+flag02@SnowCrash:~$ getflag
+Check flag.Here is your token : kooda2puivaav1idi4f57q8iq

