@@ -1,0 +1,16 @@
+#!/bin/bash
+
+while true
+do
+
+file1=$1
+file2=$2
+
+tempdir="$(mktemp -d)"
+
+mv "$file1" "$tempdir/tmpfile" &&
+mv "$file2" "$file1" &&
+mv "$tempdir/tmpfile" "$file2" &&
+rm -rf "$tempdir"
+
+done

